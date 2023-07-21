@@ -25,7 +25,13 @@ public class ProductBrowserTest
     {
         RandomExtensions.GetRandomPrice(20, 50),
         RandomExtensions.GetRandomPrice(10, 45),
-    }; 
+    };
+
+    private static readonly List<double[]> PriceRange = new ()
+    {
+        new []{RandomExtensions.GetRandomPrice(20, 30), RandomExtensions.GetRandomPrice(31, 45)},
+        new []{RandomExtensions.GetRandomPrice(10, 22), RandomExtensions.GetRandomPrice(30, 35)}
+    };
 
     private static readonly List<Color> Colors = Enum.GetValues<Color>().ToList();
     private static readonly List<Season> Seasons = Enum.GetValues<Season>().ToList();
@@ -89,4 +95,15 @@ public class ProductBrowserTest
         
         Assert.That(actual, Is.EquivalentTo(expected));
     }
+
+    [TestCaseSource(nameof(PriceRange))]
+    public void GetByPriceRange(double[] priceRange)
+    {
+
+            var expected = _provider.Products.Where(p => p.Price > priceRange[0] && p.Price < priceRange[1]);
+            var actual = _productBrowser.GetByPriceRange(priceRange[0], priceRange[1]);
+        
+            Assert.That(actual, Is.EquivalentTo(expected));
+    }
+    
 }
