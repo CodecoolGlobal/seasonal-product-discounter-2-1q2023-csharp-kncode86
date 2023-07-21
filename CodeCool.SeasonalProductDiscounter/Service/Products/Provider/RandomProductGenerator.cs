@@ -1,4 +1,5 @@
-﻿using CodeCool.SeasonalProductDiscounter.Model.Enums;
+﻿using CodeCool.SeasonalProductDiscounter.Extensions;
+using CodeCool.SeasonalProductDiscounter.Model.Enums;
 using CodeCool.SeasonalProductDiscounter.Model.Products;
 
 namespace CodeCool.SeasonalProductDiscounter.Service.Products.Provider;
@@ -28,26 +29,35 @@ public class RandomProductGenerator : IProductProvider
 
     private static IEnumerable<Product> GenerateRandomProducts(uint count, double minimumPrice, double maximumPrice)
     {
-        return default;
+        var products = new List<Product>();
+        
+        for (uint i = 0; i < count; i++)
+        {
+            products.Add(new Product(i, GetRandomName(GetRandomColor()), GetRandomColor(), GetRandomSeason(), RandomExtensions.GetRandomPrice(minimumPrice, maximumPrice)));
+        }
+        
+        return products;
     }
 
     private static Color GetRandomColor()
     {
-        return default;
+        return Colors[Random.Next(Colors.Length)];
     }
 
     private static string GetRandomName(Color color)
     {
-        return default;
+        return $"{color} {Names[Random.Next(Names.Length)]}";
     }
 
     private static Season GetRandomSeason()
     {
-        return default;
+        return Seasons[Random.Next(Seasons.Length)];
     }
 
+    /*
     private static double GetRandomPrice(double minimumPrice, double maximumPrice)
     {
-        return default;
+        return minimumPrice + Random.NextDouble() * (maximumPrice - minimumPrice);
     }
+    */
 }

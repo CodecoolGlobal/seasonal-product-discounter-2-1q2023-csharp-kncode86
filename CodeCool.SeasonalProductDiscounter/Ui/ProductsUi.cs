@@ -1,5 +1,6 @@
 ﻿using CodeCool.SeasonalProductDiscounter.Model.Products;
 using CodeCool.SeasonalProductDiscounter.Service.Products.Browser;
+using CodeCool.SeasonalProductDiscounter.Service.Products.Provider;
 
 namespace CodeCool.SeasonalProductDiscounter.Ui;
 
@@ -15,7 +16,6 @@ public class ProductsUi
     public void Run()
     {
         PrintProducts("Shirts", _productBrowser.GetByName("skirt"));
-
         //...
     }
 
