@@ -18,7 +18,8 @@ public class ProductsUi
     {
         // PrintProducts("All products", _productBrowser.GetAll());
         // PrintProducts("Shirts", _productBrowser.GetByName("shirt"));
-        PrintProducts("Blue products", _productBrowser.GetByColor(Color.Blue));
+        // PrintProducts("Blue products", _productBrowser.GetByColor(Color.Blue));
+        PrintProducts("Autumn products", _productBrowser.GetBySeason(Season.Autumn));
         
     }
 

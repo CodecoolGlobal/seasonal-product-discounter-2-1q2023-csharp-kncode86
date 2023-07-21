@@ -31,7 +31,7 @@ public class ProductBrowser: IProductBrowser
 
     public IEnumerable<Product> GetBySeason(Season season)
     {
-        throw new NotImplementedException();
+        return _products.Where(p => p.Season == season);
     }
 
     public IEnumerable<Product> GetByPriceSmallerThan(double price)

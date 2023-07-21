@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using CodeCool.SeasonalProductDiscounter.Model.Enums;
 using CodeCool.SeasonalProductDiscounter.Service.Products.Browser;
 using CodeCool.SeasonalProductDiscounter.Service.Products.Provider;
 using Color = CodeCool.SeasonalProductDiscounter.Model.Enums.Color;
@@ -21,7 +22,8 @@ public class ProductBrowserTest
     };
 
     private static readonly List<Color> Colors = Enum.GetValues<Color>().ToList();
-    
+    private static readonly List<Season> Seasons = Enum.GetValues<Season>().ToList();
+
     public ProductBrowserTest()
     {
         _provider = new RandomProductGenerator(50, 10, 70);
@@ -51,6 +53,15 @@ public class ProductBrowserTest
     {
         var expected = _provider.Products.Where(p => p.Color == color);
         var actual = _productBrowser.GetByColor(color);
+
+        Assert.That(actual, Is.EquivalentTo(expected));
+    }
+    
+    [TestCaseSource(nameof(Seasons))]
+    public void GetBySeason(Season season)
+    {
+        var expected = _provider.Products.Where(p => p.Season == season);
+        var actual = _productBrowser.GetBySeason(season);
 
         Assert.That(actual, Is.EquivalentTo(expected));
     }
