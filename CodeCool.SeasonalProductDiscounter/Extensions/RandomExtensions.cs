@@ -1,6 +1,6 @@
 namespace CodeCool.SeasonalProductDiscounter.Extensions;
 
-public class RandomExtensions
+public static class RandomExtensions
 {
     private static readonly Random Random = new();
     

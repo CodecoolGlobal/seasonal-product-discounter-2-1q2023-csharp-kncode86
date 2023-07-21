@@ -22,13 +22,14 @@ public class ProductBrowserTest
     public ProductBrowserTest()
     {
         _provider = new RandomProductGenerator(50, 10, 70);
+        _productBrowser = new ProductBrowser(_provider.Products);
     }
 
     [TestCaseSource(nameof(Names))]
     public void GetByName(string name)
     {
         var expected = _provider.Products.Where(p => p.Name.Contains(name));
-        var actual =_productBrowser.GetByName(name);
+        var actual = _productBrowser.GetByName(name);
 
         Assert.That(actual, Is.EquivalentTo(expected));
     }

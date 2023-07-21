@@ -15,8 +15,9 @@ public class ProductsUi
 
     public void Run()
     {
-        PrintProducts("Shirts", _productBrowser.GetByName("skirt"));
-        //...
+        PrintProducts("Shirts", _productBrowser.GetByName("shirt"));
+
+        PrintProducts("All products", _productBrowser.GetAll());
     }
 
     private static void PrintProducts(string text, IEnumerable<Product> products)
