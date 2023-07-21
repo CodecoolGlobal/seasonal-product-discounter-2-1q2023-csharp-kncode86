@@ -1,4 +1,4 @@
-﻿using System.Drawing;
+﻿using CodeCool.SeasonalProductDiscounter.Extensions;
 using CodeCool.SeasonalProductDiscounter.Model.Enums;
 using CodeCool.SeasonalProductDiscounter.Service.Products.Browser;
 using CodeCool.SeasonalProductDiscounter.Service.Products.Provider;
@@ -20,6 +20,12 @@ public class ProductBrowserTest
         "hat",
         "gloves"
     };
+
+    private static readonly double[] Price =
+    {
+        RandomExtensions.GetRandomPrice(20, 50),
+        RandomExtensions.GetRandomPrice(10, 45),
+    }; 
 
     private static readonly List<Color> Colors = Enum.GetValues<Color>().ToList();
     private static readonly List<Season> Seasons = Enum.GetValues<Season>().ToList();
@@ -63,6 +69,16 @@ public class ProductBrowserTest
         var expected = _provider.Products.Where(p => p.Season == season);
         var actual = _productBrowser.GetBySeason(season);
 
+        Assert.That(actual, Is.EquivalentTo(expected));
+    }
+
+    [TestCaseSource(nameof(Price))]
+
+    public void GetByPriceSmallerThan(double price)
+    {
+        var expected = _provider.Products.Where(p => p.Price < price);
+        var actual = _productBrowser.GetByPriceSmallerThan(price);
+        
         Assert.That(actual, Is.EquivalentTo(expected));
     }
 }

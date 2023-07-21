@@ -36,17 +36,17 @@ public class ProductBrowser: IProductBrowser
 
     public IEnumerable<Product> GetByPriceSmallerThan(double price)
     {
-        throw new NotImplementedException();
+        return _products.Where(p => p.Price < price);
     }
 
     public IEnumerable<Product> GetByPriceGreaterThan(double price)
     {
-        throw new NotImplementedException();
+        return _products.Where(p => p.Price > price);
     }
 
     public IEnumerable<Product> GetByPriceRange(double minimumPrice, double maximumPrice)
     {
-        throw new NotImplementedException();
+        return _products.Where(p => p.Price > minimumPrice && p.Price < maximumPrice);
     }
 
     public IEnumerable<IGrouping<string, Product>> GroupByName()
