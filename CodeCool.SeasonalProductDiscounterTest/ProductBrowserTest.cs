@@ -80,4 +80,13 @@ public class ProductBrowserTest
         
         Assert.That(actual, Is.EquivalentTo(expected));
     }
+    
+    [TestCaseSource(nameof(Price))]
+    public void GetByPriceGreaterThan(double price)
+    {
+        var expected = _provider.Products.Where(p => p.Price > price);
+        var actual = _productBrowser.GetByPriceGreaterThan(price);
+        
+        Assert.That(actual, Is.EquivalentTo(expected));
+    }
 }
