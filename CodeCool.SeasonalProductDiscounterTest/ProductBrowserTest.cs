@@ -73,7 +73,6 @@ public class ProductBrowserTest
     }
 
     [TestCaseSource(nameof(Price))]
-
     public void GetByPriceSmallerThan(double price)
     {
         var expected = _provider.Products.Where(p => p.Price < price);
