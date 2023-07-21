@@ -24,6 +24,15 @@ public class ProductBrowserTest
         _provider = new RandomProductGenerator(50, 10, 70);
         _productBrowser = new ProductBrowser(_provider.Products);
     }
+    
+    [Test]
+    public void GetAll()
+    {
+        var expected = _provider.Products;
+        var actual = _productBrowser.GetAll();
+        
+        Assert.That(actual, Is.EquivalentTo(expected));
+    }
 
     [TestCaseSource(nameof(Names))]
     public void GetByName(string name)

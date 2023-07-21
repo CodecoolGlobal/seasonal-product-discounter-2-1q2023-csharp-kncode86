@@ -1,4 +1,5 @@
-﻿using CodeCool.SeasonalProductDiscounter.Model.Products;
+﻿using CodeCool.SeasonalProductDiscounter.Model.Enums;
+using CodeCool.SeasonalProductDiscounter.Model.Products;
 using CodeCool.SeasonalProductDiscounter.Service.Products.Browser;
 using CodeCool.SeasonalProductDiscounter.Service.Products.Provider;
 
@@ -15,9 +16,10 @@ public class ProductsUi
 
     public void Run()
     {
-        PrintProducts("Shirts", _productBrowser.GetByName("shirt"));
-
-        PrintProducts("All products", _productBrowser.GetAll());
+        // PrintProducts("All products", _productBrowser.GetAll());
+        // PrintProducts("Shirts", _productBrowser.GetByName("shirt"));
+        PrintProducts("Blue products", _productBrowser.GetByColor(Color.Blue));
+        
     }
 
     private static void PrintProducts(string text, IEnumerable<Product> products)

@@ -26,7 +26,7 @@ public class ProductBrowser: IProductBrowser
 
     public IEnumerable<Product> GetByColor(Color color)
     {
-        throw new NotImplementedException();
+        return _products.Where(p => p.Color == color);
     }
 
     public IEnumerable<Product> GetBySeason(Season season)

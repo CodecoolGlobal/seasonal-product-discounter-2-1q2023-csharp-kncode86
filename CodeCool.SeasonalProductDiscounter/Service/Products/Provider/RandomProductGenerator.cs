@@ -33,7 +33,8 @@ public class RandomProductGenerator : IProductProvider
         
         for (uint i = 0; i < count; i++)
         {
-            products.Add(new Product(i, GetRandomName(GetRandomColor()), GetRandomColor(), GetRandomSeason(), RandomExtensions.GetRandomPrice(minimumPrice, maximumPrice)));
+            var color = GetRandomColor();
+            products.Add(new Product(i, GetRandomName(color), color, GetRandomSeason(), RandomExtensions.GetRandomPrice(minimumPrice, maximumPrice)));
         }
         
         return products;
