@@ -150,4 +150,13 @@ public class ProductBrowserTest
         
         Assert.That(actual, Is.EquivalentTo(expected));
     }
+    
+    [Test]
+    public void OrderBySeason()
+    {
+        var expected = _provider.Products.OrderBy(p => p.Season);
+        var actual = _productBrowser.OrderBySeason();
+        
+        Assert.That(actual, Is.EquivalentTo(expected));
+    }
 }
