@@ -124,4 +124,13 @@ public class ProductBrowserTest
         Assert.That(actual, Is.EquivalentTo(expected));
     }
     
+    [Test]
+    public void GroupBySeason()
+    {
+        var expected = _provider.Products.GroupBy(p => p.Season);
+        var actual = _productBrowser.GroupBySeason();
+        
+        Assert.That(actual, Is.EquivalentTo(expected));
+    }
+    
 }
