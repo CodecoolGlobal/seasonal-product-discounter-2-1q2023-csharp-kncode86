@@ -142,4 +142,12 @@ public class ProductBrowserTest
         Assert.That(actual, Is.EquivalentTo(expected));
     }
     
+    [Test]
+    public void OrderByColor()
+    {
+        var expected = _provider.Products.OrderBy(p => p.Color);
+        var actual = _productBrowser.OrderByColor();
+        
+        Assert.That(actual, Is.EquivalentTo(expected));
+    }
 }
