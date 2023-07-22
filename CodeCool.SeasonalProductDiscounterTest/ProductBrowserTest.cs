@@ -115,4 +115,13 @@ public class ProductBrowserTest
         Assert.That(actual, Is.EquivalentTo(expected));
     }
     
+    [Test]
+    public void GroupByColor()
+    {
+        var expected = _provider.Products.GroupBy(p => p.Color);
+        var actual = _productBrowser.GroupByColor();
+        
+        Assert.That(actual, Is.EquivalentTo(expected));
+    }
+    
 }
