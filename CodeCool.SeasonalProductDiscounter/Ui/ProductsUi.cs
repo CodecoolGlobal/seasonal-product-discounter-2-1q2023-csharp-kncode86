@@ -22,8 +22,11 @@ public class ProductsUi
         // PrintProducts("Autumn products", _productBrowser.GetBySeason(Season.Autumn));
         // PrintProducts("Products being cheaper than the selected price", _productBrowser.GetByPriceSmallerThan(30));
         // PrintProducts("Products being more expensive than the selected price", _productBrowser.GetByPriceGreaterThan(30));
-        PrintProducts("Products between the selected price-range", _productBrowser.GetByPriceRange(30, 50));
-        
+        // PrintProducts("Products between the selected price-range", _productBrowser.GetByPriceRange(30, 40));
+        // PrintProducts("Products grouped by name", _productBrowser.GroupByName().SelectMany(group => group));
+        // PrintProducts("Products grouped by color", _productBrowser.GroupByColor().SelectMany(group => group));
+        // PrintProducts("Products grouped by season", _productBrowser.GroupBySeason().SelectMany(group => group));
+        // PrintProducts("Products grouped by price-range", _productBrowser.GroupByPriceRange().SelectMany(group => group));
     }
 
     private static void PrintProducts(string text, IEnumerable<Product> products)

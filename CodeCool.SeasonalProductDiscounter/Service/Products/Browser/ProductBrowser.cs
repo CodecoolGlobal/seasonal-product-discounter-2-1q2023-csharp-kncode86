@@ -46,46 +46,57 @@ public class ProductBrowser: IProductBrowser
 
     public IEnumerable<Product> GetByPriceRange(double minimumPrice, double maximumPrice)
     {
-        return _products.Where(p => p.Price > minimumPrice && p.Price < maximumPrice);
+        //return _products.Where(p => p.Price > minimumPrice && p.Price < maximumPrice);
+        return _products.Where(p => new PriceRange(minimumPrice, maximumPrice).Contains(p.Price));
     }
 
     public IEnumerable<IGrouping<string, Product>> GroupByName()
     {
-        throw new NotImplementedException();
+        return _products.GroupBy(p => p.Name);
     }
 
     public IEnumerable<IGrouping<Color, Product>> GroupByColor()
     {
-        throw new NotImplementedException();
+        return _products.GroupBy(p => p.Color);
     }
 
     public IEnumerable<IGrouping<Season, Product>> GroupBySeason()
     {
-        throw new NotImplementedException();
+        return _products.GroupBy(p => p.Season);
     }
 
     public IEnumerable<IGrouping<PriceRange, Product>> GroupByPriceRange()
     {
-        throw new NotImplementedException();
+        // To be refactored!
+        
+        return _products.GroupBy(p =>
+        {
+            return p.Price switch
+            {
+                <= 10.00 => new PriceRange(0.00, 10.00),
+                <= 50.00 => new PriceRange(11.00, 50.00),
+                _ => new PriceRange(51.00, double.MaxValue)
+            };
+        });
     }
 
     public IEnumerable<Product> OrderByName()
     {
-        throw new NotImplementedException();
+        return _products.OrderBy(p => p.Name);
     }
 
     public IEnumerable<Product> OrderByColor()
     {
-        throw new NotImplementedException();
+        return _products.OrderBy(p => p.Color);
     }
 
     public IEnumerable<Product> OrderBySeason()
     {
-        throw new NotImplementedException();
+        return _products.OrderBy(p => p.Season);
     }
 
     public IEnumerable<Product> OrderByPrice()
     {
-        throw new NotImplementedException();
+        return _products.OrderBy(p => p.Price);
     }
 }

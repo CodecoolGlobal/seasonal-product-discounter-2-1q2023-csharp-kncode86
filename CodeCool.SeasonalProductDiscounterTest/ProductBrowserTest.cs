@@ -105,5 +105,14 @@ public class ProductBrowserTest
         
             Assert.That(actual, Is.EquivalentTo(expected));
     }
+
+    [Test]
+    public void GroupByName()
+    {
+        var expected = _provider.Products.GroupBy(p => p.Name);
+        var actual = _productBrowser.GroupByName();
+        
+        Assert.That(actual, Is.EquivalentTo(expected));
+    }
     
 }
