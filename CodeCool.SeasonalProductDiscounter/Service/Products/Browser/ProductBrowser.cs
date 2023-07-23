@@ -1,6 +1,5 @@
 using CodeCool.SeasonalProductDiscounter.Model.Enums;
 using CodeCool.SeasonalProductDiscounter.Model.Products;
-using CodeCool.SeasonalProductDiscounter.Service.Products.Provider;
 
 namespace CodeCool.SeasonalProductDiscounter.Service.Products.Browser;
 
@@ -15,8 +14,7 @@ public class ProductBrowser: IProductBrowser
 
     public IEnumerable<Product> GetAll()
     {
-        // return new ProductProvider().Products;
-         return _products;
+        return _products;
     }
 
     public IEnumerable<Product> GetByName(string name)
@@ -46,7 +44,6 @@ public class ProductBrowser: IProductBrowser
 
     public IEnumerable<Product> GetByPriceRange(double minimumPrice, double maximumPrice)
     {
-        //return _products.Where(p => p.Price > minimumPrice && p.Price < maximumPrice);
         return _products.Where(p => new PriceRange(minimumPrice, maximumPrice).Contains(p.Price));
     }
 
@@ -67,15 +64,14 @@ public class ProductBrowser: IProductBrowser
 
     public IEnumerable<IGrouping<PriceRange, Product>> GroupByPriceRange()
     {
-        // To be refactored!
-        
         return _products.GroupBy(p =>
         {
             return p.Price switch
             {
-                <= 10.00 => new PriceRange(0.00, 10.00),
-                <= 50.00 => new PriceRange(11.00, 50.00),
-                _ => new PriceRange(51.00, double.MaxValue)
+                <= 20.00 => new PriceRange(0.00, 20.00),
+                <= 30.00 => new PriceRange(11.00, 30.00),
+                <= 40.00 => new PriceRange(31.00, 40.00),
+                _ => new PriceRange(41.00, double.MaxValue)
             };
         });
     }

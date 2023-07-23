@@ -26,7 +26,7 @@ public class ProductsUi
         // PrintProducts("Products grouped by name", _productBrowser.GroupByName().SelectMany(group => group));
         // PrintProducts("Products grouped by color", _productBrowser.GroupByColor().SelectMany(group => group));
         // PrintProducts("Products grouped by season", _productBrowser.GroupBySeason().SelectMany(group => group));
-        // PrintProducts("Products grouped by price-range", _productBrowser.GroupByPriceRange().SelectMany(group => group));
+        PrintProducts("Products grouped by price-range", _productBrowser.GroupByPriceRange().SelectMany(group => group));
     }
 
     private static void PrintProducts(string text, IEnumerable<Product> products)

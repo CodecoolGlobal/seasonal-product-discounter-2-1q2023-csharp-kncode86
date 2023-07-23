@@ -13,9 +13,11 @@ public class StatisticsUi
 
     public void Run()
     {
-        foreach (var colorToAvgPrice in _productStatistics.GetAveragePricesByColor())
-        {
-            Console.WriteLine($"{colorToAvgPrice.Key}: {colorToAvgPrice.Value}");
-        }
+        Console.WriteLine($"Most expensive product: {_productStatistics.GetMostExpensive()}");
+        
+        // foreach (var colorToAvgPrice in _productStatistics.GetAveragePricesByColor())
+        // {
+        //     Console.WriteLine($"{colorToAvgPrice.Key}: {colorToAvgPrice.Value:N2}");
+        // }
     }
 }
