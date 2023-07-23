@@ -44,7 +44,16 @@ public class ProductStatistics: IProductStatistics
 
     public Dictionary<PriceRange, double> GetAveragePricesByPriceRange()
     {
-        throw new NotImplementedException();
+        return _products.GroupBy(p =>
+        {
+            return p.Price switch
+            {
+                <= 20.00 => new PriceRange(0.00, 20.00),
+                <= 30.00 => new PriceRange(21.00, 30.00),
+                <= 40.00 => new PriceRange(31.00, 40.00),
+                _ => new PriceRange(41.00, 100.00)
+            };
+        }).ToDictionary(g => g.Key, g => g.Average(p => p.Price));
     }
 
     public Dictionary<string, int> GetCountByName()
@@ -64,6 +73,16 @@ public class ProductStatistics: IProductStatistics
 
     public Dictionary<PriceRange, int> GetCountByPriceRange()
     {
-        throw new NotImplementedException();
+        return _products.GroupBy(p =>
+        {
+            return p.Price switch
+            {
+                <= 20.00 => new PriceRange(0.00, 20.00),
+                <= 30.00 => new PriceRange(21.00, 30.00),
+                <= 40.00 => new PriceRange(31.00, 40.00),
+                _ => new PriceRange(41.00, 100.00)
+            };
+        }).ToDictionary(g => g.Key, g => g.Count());
+
     }
 }

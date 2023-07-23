@@ -69,9 +69,9 @@ public class ProductBrowser: IProductBrowser
             return p.Price switch
             {
                 <= 20.00 => new PriceRange(0.00, 20.00),
-                <= 30.00 => new PriceRange(11.00, 30.00),
+                <= 30.00 => new PriceRange(21.00, 30.00),
                 <= 40.00 => new PriceRange(31.00, 40.00),
-                _ => new PriceRange(41.00, double.MaxValue)
+                _ => new PriceRange(41.00, 100.00)
             };
         });
     }

@@ -10,5 +10,5 @@ IProductStatistics productStatistics = new ProductStatistics(productProvider.Pro
 var productsUi = new ProductsUi(productBrowser);
 var statisticsUi = new StatisticsUi(productStatistics);
 
-productsUi.Run();
-//statisticsUi.Run();
+//productsUi.Run();
+statisticsUi.Run();
