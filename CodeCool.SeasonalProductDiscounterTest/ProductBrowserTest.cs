@@ -1,5 +1,6 @@
 ﻿using CodeCool.SeasonalProductDiscounter.Extensions;
 using CodeCool.SeasonalProductDiscounter.Model.Enums;
+using CodeCool.SeasonalProductDiscounter.Model.Products;
 using CodeCool.SeasonalProductDiscounter.Service.Products.Browser;
 using CodeCool.SeasonalProductDiscounter.Service.Products.Provider;
 using Color = CodeCool.SeasonalProductDiscounter.Model.Enums.Color;
@@ -129,6 +130,26 @@ public class ProductBrowserTest
     {
         var expected = _provider.Products.GroupBy(p => p.Season);
         var actual = _productBrowser.GroupBySeason();
+        
+        Assert.That(actual, Is.EquivalentTo(expected));
+    }
+
+    [Test]
+
+    public void GroupByPriceRange()
+    {
+        var expected = _provider.Products.GroupBy(p =>
+        {
+            return p.Price switch
+            {
+                <= 20.00 => new PriceRange(0.00, 20.00),
+                <= 30.00 => new PriceRange(21.00, 30.00),
+                <= 40.00 => new PriceRange(31.00, 40.00),
+                _ => new PriceRange(41.00, 100.00)
+            };
+        });
+
+        var actual = _productBrowser.GroupByPriceRange();
         
         Assert.That(actual, Is.EquivalentTo(expected));
     }
