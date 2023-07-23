@@ -83,6 +83,5 @@ public class ProductStatistics: IProductStatistics
                 _ => new PriceRange(41.00, 100.00)
             };
         }).ToDictionary(g => g.Key, g => g.Count());
-
     }
 }
