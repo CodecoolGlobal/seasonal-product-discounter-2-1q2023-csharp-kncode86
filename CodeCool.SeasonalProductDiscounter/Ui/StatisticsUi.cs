@@ -1,4 +1,5 @@
-﻿using CodeCool.SeasonalProductDiscounter.Service.Products.Statistics;
+﻿using CodeCool.SeasonalProductDiscounter.Service.Logger;
+using CodeCool.SeasonalProductDiscounter.Service.Products.Statistics;
 
 namespace CodeCool.SeasonalProductDiscounter.Ui;
 
@@ -13,16 +14,10 @@ public class StatisticsUi
 
     public void Run()
     {
-        //Console.WriteLine($"Most expensive product: {_productStatistics.GetMostExpensive()}");
-        
-        // foreach (var colorToAvgPrice in _productStatistics.GetAveragePricesByColor())
-        // {
-        //     Console.WriteLine($"{colorToAvgPrice.Key}: {colorToAvgPrice.Value:N2}");
-        // }
-
+        ILogger logger = new ConsoleLogger();
         foreach (var priceRangeToAvgPrice in _productStatistics.GetAveragePricesByPriceRange())
         {
-            Console.WriteLine($"{priceRangeToAvgPrice.Key}: {priceRangeToAvgPrice.Value:N2}");
+            logger.LogInfo($"{priceRangeToAvgPrice.Key}: {priceRangeToAvgPrice.Value:N2}");
         }
     }
 }
