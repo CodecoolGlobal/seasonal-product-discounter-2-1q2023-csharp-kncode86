@@ -1,4 +1,5 @@
-﻿using CodeCool.SeasonalProductDiscounter.Service.Products.Browser;
+﻿using CodeCool.SeasonalProductDiscounter.Service.Logger;
+using CodeCool.SeasonalProductDiscounter.Service.Products.Browser;
 using CodeCool.SeasonalProductDiscounter.Service.Products.Provider;
 using CodeCool.SeasonalProductDiscounter.Service.Products.Statistics;
 using CodeCool.SeasonalProductDiscounter.Ui;
@@ -12,3 +13,5 @@ var statisticsUi = new StatisticsUi(productStatistics);
 
 //productsUi.Run();
 statisticsUi.Run();
+
+new FileLogger(productStatistics).CreateFileLog(); 
